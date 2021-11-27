@@ -56,6 +56,8 @@ function getTypeValidator(type) {
             return isBoolean;
         case Object:
             return isObject;
+        case UUID:
+            return (ID) => UUID.isValid(ID);
         default:
             throw new Error(`Validator ${type} is not supported.`);
     }
