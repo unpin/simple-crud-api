@@ -1,3 +1,5 @@
+import UUID from '../../../utils/uuid/UUID.js';
+
 export function schemaValidator(model, data) {
     const className = model.name;
     const schemaObj = model.schema;

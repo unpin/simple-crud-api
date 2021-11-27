@@ -1,5 +1,5 @@
 import Person from '../models/Person.js';
-import uuid from '../utils/uuid/uuid.js';
+import UUID from '../utils/uuid/UUID.js';
 
 export async function create(req, res) {
     try {
@@ -22,7 +22,7 @@ export async function getAll(req, res) {
 
 export async function getByID(req, res) {
     const _id = req.params.personID;
-    if (!uuid.isValid(_id)) {
+    if (!UUID.isValid(_id)) {
         return res.status(400).end('Provided personID is not valid.');
     }
     try {
@@ -38,7 +38,7 @@ export async function getByID(req, res) {
 
 export async function update(req, res) {
     const personID = req.params.personID;
-    if (!uuid.isValid(personID)) {
+    if (!UUID.isValid(personID)) {
         return res.status(400).end('Provided personID is not valid.');
     }
     try {
@@ -54,7 +54,7 @@ export async function update(req, res) {
 
 export async function remove(req, res) {
     const personID = req.params.personID;
-    if (!uuid.isValid(personID)) {
+    if (!UUID.isValid(personID)) {
         return res.status(400).end('Provided personID is not valid.');
     }
     try {

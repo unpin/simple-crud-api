@@ -1,13 +1,4 @@
-import uuid from '../../../utils/uuid/uuid.js';
-
-export class UUID {
-    constructor() {
-        this.uuid = uuid.generateUUID();
-    }
-    static isValid(_id) {
-        return uuid.isValid(_id);
-    }
-}
+import UUID from '../../../utils/uuid/UUID.js';
 
 const defaultOptions = {
     autoGenerateID: true,
@@ -85,7 +76,7 @@ export default class DataSource {
 
     static generateDocumentID(doc) {
         if (!doc._id) {
-            doc._id = uuid.generateUUID();
+            doc._id = UUID.generateUUID();
         }
     }
 
