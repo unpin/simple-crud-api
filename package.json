@@ -1,0 +1,46 @@
+{
+    "name": "simple-crud-api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "type": "module",
+    "scripts": {
+        "start:prod": "webpack build && node dist/bundle.js",
+        "start:dev": "nodemon index.js",
+        "test": "jest --coverage"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/unpin/simple-crud-api.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/unpin/simple-crud-api/issues"
+    },
+    "homepage": "https://github.com/unpin/simple-crud-api#readme",
+    "devDependencies": {
+        "@babel/plugin-transform-modules-commonjs": "^7.16.0",
+        "@types/jest": "^27.0.3",
+        "jest": "^27.3.1",
+        "nodemon": "^2.0.15",
+        "supertest": "^6.1.6"
+    },
+    "dependencies": {
+        "dotenv": "^10.0.0"
+    },
+    "babel": {
+        "env": {
+            "test": {
+                "plugins": [
+                    "@babel/plugin-transform-modules-commonjs"
+                ]
+            }
+        }
+    },
+    "jest": {
+        "verbose": true
+    },
+    "private": true
+}
