@@ -67,7 +67,7 @@ function isNumber(num) {
 }
 
 function isString(s) {
-    return s && typeof s === 'string';
+    return typeof s === 'string';
 }
 
 function isArray(obj) {
