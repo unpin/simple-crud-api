@@ -1,9 +1,7 @@
 import Model from '../lib/database/model/Model.js';
 
 export default class Person extends Model {
-    constructor(data) {
-        super(data);
-    }
+    constructor() {}
 
     static schema = {
         name: {
@@ -22,8 +20,4 @@ export default class Person extends Model {
             required: true,
         },
     };
-
-    toJSON() {
-        return this.data;
-    }
 }

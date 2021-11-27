@@ -2,19 +2,11 @@ import DataSource from '../source/DataSource.js';
 import { schemaValidator } from './SchemaValidator.js';
 
 export default class Model {
-    constructor(data) {
-        this.data = data;
-    }
-
-    save() {
-        return this.constructor.createOne.call(this, this.data);
-    }
+    constructor() {}
 
     static createOne(data) {
-        const className = this.constructor.name;
-
-        schemaValidator(this);
-
+        const className = this.name;
+        schemaValidator(this, data);
         return DataSource.getInstance().addDocument(className, data);
     }
 
@@ -34,6 +26,7 @@ export default class Model {
 
     static updateOne(query, update, options = { new: true }) {
         const className = this.name;
+        schemaValidator(this, update);
         return DataSource.getInstance().updateDocument(
             className,
             query,

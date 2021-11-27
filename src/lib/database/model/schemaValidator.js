@@ -1,7 +1,6 @@
-export function schemaValidator(obj) {
-    const className = obj.constructor.name;
-    const schemaObj = obj.constructor.schema;
-    const data = obj.data;
+export function schemaValidator(model, data) {
+    const className = model.name;
+    const schemaObj = model.schema;
 
     for (const [prop, schema] of Object.entries(schemaObj)) {
         if (schema.required) {
