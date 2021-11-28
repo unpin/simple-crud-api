@@ -7,7 +7,7 @@
     "scripts": {
         "start:prod": "webpack && node dist/bundle.js",
         "start:dev": "nodemon index.js",
-        "test": "jest --coverage"
+        "test": "jest --detectOpenHandles --coverage"
     },
     "repository": {
         "type": "git",
