@@ -3,8 +3,7 @@ import UUID from '../utils/uuid/UUID.js';
 
 export default class Person extends Model {
     constructor(data) {
-        super();
-        this.data = data;
+        super(data);
     }
 
     async save() {
@@ -32,8 +31,4 @@ export default class Person extends Model {
             required: true,
         },
     };
-
-    toJSON() {
-        return Person.trimObject(this.data);
-    }
 }

@@ -2,7 +2,9 @@ import DataSource from '../source/DataSource.js';
 import { schemaValidator } from './SchemaValidator.js';
 
 export default class Model {
-    constructor() {}
+    constructor(data) {
+        this.data = data;
+    }
 
     static createOne(data) {
         const className = this.name;
@@ -54,5 +56,9 @@ export default class Model {
             }
         }
         return trimmed;
+    }
+
+    toJSON() {
+        return this.constructor.trimObject.call(this.constructor, this.data);
     }
 }
