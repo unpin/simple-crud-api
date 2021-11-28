@@ -7,7 +7,7 @@ export async function create(req, res) {
         await person.save();
         res.status(201).json(person);
     } catch (error) {
-        res.status(400).end(error);
+        res.status(400).end(error.message);
     }
 }
 
