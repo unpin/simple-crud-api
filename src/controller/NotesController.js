@@ -3,11 +3,11 @@ import Person from '../models/Person.js';
 import UUID from '../utils/uuid/UUID.js';
 
 export async function create(req, res) {
-    const personID = req.body.personID;
-    if (!UUID.isValid(personID)) {
-        return res.status(400).end('Provided personID is not valid.');
-    }
     try {
+        const personID = req.body.personID;
+        if (!UUID.isValid(personID)) {
+            return res.status(400).end('Provided personID is not valid.');
+        }
         const person = await Person.findByID(personID);
         if (!person) {
             return res.status(404).end('Person with this ID does not exist.');
@@ -18,7 +18,11 @@ export async function create(req, res) {
         const created = await Note.createOne(note);
         res.status(201).json(created);
     } catch (error) {
-        res.status(400).end(error.message);
+        if (error instanceof SchemaValidationError) {
+            return res.status(400).end(error.message);
+        }
+        console.error(error.message);
+        res.status(500).end('Something went wrong.');
     }
 }
 

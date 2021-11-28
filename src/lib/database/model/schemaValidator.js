@@ -1,4 +1,5 @@
 import UUID from '../../../utils/uuid/UUID.js';
+import SchemaValidationError from '../error/SchemaValidationError.js';
 
 export function schemaValidator(model, data) {
     const className = model.name;
@@ -7,7 +8,9 @@ export function schemaValidator(model, data) {
     for (const [prop, schema] of Object.entries(schemaObj)) {
         if (schema.required) {
             if (!(prop in data)) {
-                throw new Error(`${className}.${prop} is required.`);
+                throw new SchemaValidationError(
+                    `${className}.${prop} is required.`
+                );
             }
         } else {
             if (!(prop in data)) {
@@ -17,7 +20,9 @@ export function schemaValidator(model, data) {
         for (const [key, value] of Object.entries(schema)) {
             const validate = getValidator(key, value);
             if (!validate(data[prop])) {
-                throw new Error(`${className}.${prop} is not valid: [${key}]`);
+                throw new SchemaValidationError(
+                    `${className}.${prop} is not valid: [${key}]`
+                );
             }
         }
     }
