@@ -3,10 +3,11 @@ import UUID from '../utils/uuid/UUID.js';
 
 export async function create(req, res) {
     try {
-        const person = await Person.createOne(req.body);
+        const person = new Person(req.body);
+        await person.save();
         res.status(201).json(person);
     } catch (error) {
-        res.status(400).end(error.message);
+        res.status(400).end(error);
     }
 }
 

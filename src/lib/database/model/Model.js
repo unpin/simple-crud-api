@@ -6,6 +6,7 @@ export default class Model {
 
     static createOne(data) {
         const className = this.name;
+        data = this.trimObject(data);
         schemaValidator(this, data);
         return DataSource.getInstance().addDocument(className, data);
     }
@@ -26,6 +27,7 @@ export default class Model {
 
     static updateOne(query, update, options = { new: true }) {
         const className = this.name;
+        update = this.trimObject(update);
         schemaValidator(this, update);
         return DataSource.getInstance().updateDocument(
             className,

@@ -1,9 +1,21 @@
 import Model from '../lib/database/model/Model.js';
+import UUID from '../utils/uuid/UUID.js';
 
 export default class Person extends Model {
-    constructor() {}
+    constructor(data) {
+        super();
+        this.data = data;
+    }
+
+    async save() {
+        this.data = await Person.createOne(this.data);
+        return this.data;
+    }
 
     static schema = {
+        _id: {
+            type: UUID,
+        },
         name: {
             type: String,
             required: true,
@@ -20,4 +32,8 @@ export default class Person extends Model {
             required: true,
         },
     };
+
+    toJSON() {
+        return Person.trimObject(this.data);
+    }
 }
