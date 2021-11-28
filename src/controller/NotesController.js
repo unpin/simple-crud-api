@@ -24,7 +24,6 @@ export async function create(req, res) {
 
 export async function getPersonNotes(req, res) {
     const personID = req.params.personID;
-    console.log({ personID });
     if (!UUID.isValid(personID)) {
         return res.status(400).end('Provided personID is not valid.');
     }
