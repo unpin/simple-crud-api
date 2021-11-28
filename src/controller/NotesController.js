@@ -1,3 +1,4 @@
+import SchemaValidationError from '../lib/database/error/SchemaValidationError.js';
 import Note from '../models/Note.js';
 import Person from '../models/Person.js';
 import UUID from '../utils/uuid/UUID.js';
@@ -21,7 +22,7 @@ export async function create(req, res) {
         if (error instanceof SchemaValidationError) {
             return res.status(400).end(error.message);
         }
-        console.error(error.message);
+        console.error({ error });
         res.status(500).end('Something went wrong.');
     }
 }
