@@ -42,4 +42,15 @@ export default class Model {
     static deleteByID(_id) {
         return this.deleteOne({ _id });
     }
+
+    static trimObject(data) {
+        const schema = this.schema;
+        const trimmed = {};
+        for (const key of Object.keys(schema)) {
+            if (data[key]) {
+                trimmed[key] = data[key];
+            }
+        }
+        return trimmed;
+    }
 }
