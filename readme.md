@@ -28,29 +28,37 @@ You should have NodeJS v16.13.0 and npm installed.
     nmp run start:prod      # Starts the server in production mode
     ```
 
+## Testing
+
+1. In order to run <b>end-to-end</b> tests run the following command:
+    ```sh
+    npm run test            # Runs End-to-end test with four different scenarios
+    ```
+
+2. To test API you can use Postman, Insomnia, curl etc. 
+    ### Note:
+    > If you use <b>Postman</b> or any other tool with automated testing, make sure to use `Person._id` as the personID property and NOT `Person.id`.
+
 ## USAGE EXAMPLES
 
-<br>
-
--   ## Application provides the following API endpoints:
-
-     <br>
+  * ### Application provides the following API endpoints:
 
     -   **GET** `/person` or `/person/${personId}` should return all persons or person with corresponding `personId`
     -   **POST** `/person` is used to create record about new person and store it in database
     -   **PUT** `/person/${personId}` is used to update record about existing person
     -   **DELETE** `/person/${personId}` is used to delete record about existing person from database
 
--   ## Persons are stored as `objects` that have following properties:
+  * ### Persons are stored as `objects` that have the following properties:
     -   `_id` — unique identifier (`string`, `uuid`) generated on server side
     -   `name` — person's name (`string`, **required**)
     -   `age` — person's age (`number`, **required**)
     -   `hobbies` — person's hobbies (`array` of `strings` or empty `array`, **required**)
-    ```js
-    {
-        "_id": UUID,            - Unique identifier
-        "name": String,         - required field
-        "age": Number,          - required field
-        "hobbies": [String]     - required field
-    }
-    ```
+
+        ```js
+        {
+            "_id": UUID,            - Unique identifier
+            "name": String,         - required field
+            "age": Number,          - required field
+            "hobbies": [String]     - required field
+        }
+        ```
